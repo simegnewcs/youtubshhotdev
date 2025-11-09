@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- PWA Meta Tags -->
+  <meta name="theme-color" content="#0066ff"/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="HTML Fundamentals">
+  <meta name="description" content="Interactive HTML Fundamentals course presentation by DevVoltz Academy">
+  <meta name="keywords" content="HTML, web development, coding, tutorial, DevVoltz">
+  
+  <!-- PWA Icons -->
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="apple-touch-icon" href="images/icon-152x152.png">
+  
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json">
+  
+  <title>DevVoltz Academy | HTML Fundamentals</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Presentation Controls -->
+  <div class="presentation-controls">
+    <div class="control-group">
+      <button class="control-btn" id="slidePrev" title="Previous Slide (←)">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <span class="slide-counter" id="slideCounter">1/8</span>
+      <button class="control-btn" id="slideNext" title="Next Slide (→)">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+
+    
+    <div class="control-group">
+      <button class="control-btn" id="toggleLaser" title="Laser Pointer (L)">
+        <i class="fas fa-bullseye"></i>
+      </button>
+      <button class="control-btn" id="toggleTheme" title="Toggle Theme (T)">
+        <i class="fas fa-moon"></i>
+      </button>
+      <button class="control-btn" id="toggleGrid" title="Toggle Grid (G)">
+        <i class="fas fa-th"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Laser Pointer -->
+  <div class="laser-pointer" id="laserPointer"></div>
+
+  <!-- Recording Indicator -->
+  <div class="recording-indicator" id="recordingIndicator">
+    <div class="recording-dot"></div>
+    <span>REC</span>
+  </div>
+
+  <!-- Progress Indicator -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- Slide Counter -->
+  <div class="slide-indicator">
+    <span id="currentSlide">1</span>
+    <div class="slide-progress">
+      <div class="slide-progress-bar"></div>
+    </div>
+    <span id="totalSlides">8</span>
+  </div>
+
+  <!-- ===== CINEMATIC INTRO ===== -->
+  <section class="slide intro-slide active" data-slide="1">
+    <div class="cinematic-overlay"></div>
+    <div class="particles-container" id="particles"></div>
+    
+    <div class="intro-content">
+      <div class="logo-reveal">
+        <div class="logo-glow"></div>
+        <img src="images/logodev2.jpg" alt="DevVoltz Academy" class="cinematic-logo">
+      </div>
+      
+      <div class="title-sequence">
+        <h1 class="main-title">
+          <span class="title-word">HTML Fundamentals</span>
+          <span class="title-word">Web Development</span>
+          <span class="title-word">Mastery</span>
+        </h1>
+        <div class="subtitle-reveal">
+          <p class="course-subtitle">Part 1: Understanding HTML Basics</p>
+          <div class="title-underline"></div>
+        </div>
+      </div>
+
+      <div class="instructor-card">
+        <div class="instructor-avatar">
+          <img src="images/logodev1.jpg" alt="Instructor">
+        </div>
+        <div class="instructor-info">
+          <h3>Simegnew Destew</h3>
+          <p>Senior Full-Stack Developer</p>
+        </div>
+      </div>
+
+      <div class="start-pulse">
+        <button class="start-button" id="startCourse">
+          <span>Start Learning</span>
+          <div class="button-glow"></div>
+        </button>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="mouse">
+        <div class="wheel"></div>
+      </div>
+      <div class="arrow"></div>
+    </div>
+  </section>
+
+  <!-- ===== WHAT IS HTML ===== -->
+  <section class="slide content-slide" data-slide="2">
+    <div class="slide-background">
+      <div class="bg-pattern"></div>
+    </div>
+    
+    <div class="slide-content">
+      <div class="slide-header">
+        <div class="chapter-badge">Part 1: HTML Fundamentals</div>
+        <h2 class="slide-title">What is HTML?</h2>
+        <div class="slide-subtitle">HyperText Markup Language</div>
+      </div>
+
+      <div class="concept-cards">
+        <div class="concept-card" data-concept="html-definition">
+          <div class="card-header">
+            <div class="card-icon">HTML</div>
+            <h3>HTML Definition</h3>
+          </div>
+          <div class="card-content">
+            <p>HTML stands for <strong>HyperText Markup Language</strong></p>
+            <ul>
+              <li>It's a <strong>formatting language</strong> used to define the appearance and contents of a web page</li>
+              <li>It's a <strong>standard markup language</strong> used to design documents displayed in browsers as web pages</li>
+              <li>HTML describes the <strong>structure</strong> of a web page</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="concept-card" data-concept="hypertext">
+          <div class="card-header">
+            <div class="card-icon">HT</div>
+            <h3>HyperText Explained</h3>
+          </div>
+          <div class="card-content">
+            <p><strong>Hypertext</strong> means "Text within Text"</p>
+            <ul>
+              <li>A text that contains links to other texts</li>
+              <li>Clicking on a link takes you to a new document or section</li>
+              <li>This is the foundation of web navigation</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="concept-card" data-concept="markup">
+          <div class="card-header">
+            <div class="card-icon">ML</div>
+            <h3>Markup Language</h3>
+          </div>
+          <div class="card-content">
+            <p>A <strong>markup language</strong> is used to define text documents within tags</p>
+            <ul>
+              <li>Tags define the structure of web pages</li>
+              <li>HTML uses tags like &lt;h1&gt;, &lt;p&gt;, &lt;div&gt; to structure content</li>
+              <li>Browsers interpret these tags to display content properly</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HTML CHARACTERISTICS ===== -->
+  <section class="slide content-slide" data-slide="3">
+    <div class="slide-background">
+      <div class="bg-grid"></div>
+    </div>
+
+    <div class="slide-content">
+      <div class="slide-header">
+        <div class="chapter-badge">Part 1: HTML Fundamentals</div>
+        <h2 class="slide-title">HTML Characteristics</h2>
+        <div class="slide-subtitle">Advantages and Disadvantages</div>
+      </div>
+
+      <div class="comparison-container">
+        <div class="advantages-section">
+          <h3 class="section-title">Advantages of HTML</h3>
+          <div class="features-grid">
+            <div class="feature-item">
+              <div class="feature-text">
+                <h4>Easy to Understand</h4>
+                <p>Simple syntax with clear tag structure</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-text">
+                <h4>Flexibility</h4>
+                <p>Can be integrated with CSS and JavaScript</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-text">
+                <h4>Linkable</h4>
+                <p>Easy to create hyperlinks between pages</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-text">
+                <h4>Limitless Features</h4>
+                <p>Continuous evolution with new standards</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-text">
+                <h4>Universal Support</h4>
+                <p>Supported by all modern browsers</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="disadvantages-section">
+          <h3 class="section-title">Disadvantages of HTML</h3>
+          <div class="features-grid">
+            <div class="feature-item">
+              <div class="feature-text">
+                <h4>Static Pages Only</h4>
+                <p>Creates only static web pages</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-text">
+                <h4>Limited Security</h4>
+                <p>Lacks built-in security features</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-text">
+                <h4>Many Tags Required</h4>
+                <p>Simple pages need many tags</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-text">
+                <h4>Not Centralized</h4>
+                <p>No centralized language structure</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-text">
+                <h4>Complex for Large Sites</h4>
+                <p>Can become complex for huge websites</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HTML EDITORS ===== -->
+  <section class="slide content-slide" data-slide="4">
+    <div class="slide-background">
+      <div class="bg-code"></div>
+    </div>
+
+    <div class="slide-content">
+      <div class="slide-header">
+        <div class="chapter-badge">Part 1: HTML Fundamentals</div>
+        <h2 class="slide-title">HTML Editors</h2>
+        <div class="slide-subtitle">Tools for Writing HTML</div>
+      </div>
+
+      <div class="editors-grid">
+        <div class="editor-card">
+          <div class="editor-icon">NP</div>
+          <h3>Notepad</h3>
+          <p>Basic text editor included with Windows</p>
+          <div class="editor-tags">
+            <span class="tag">Free</span>
+            <span class="tag">Basic</span>
+          </div>
+        </div>
+
+        <div class="editor-card">
+          <div class="editor-icon">NP++</div>
+          <h3>Notepad++</h3>
+          <p>Enhanced text editor with syntax highlighting</p>
+          <div class="editor-tags">
+            <span class="tag">Free</span>
+            <span class="tag">Feature-rich</span>
+          </div>
+        </div>
+
+        <div class="editor-card">
+          <div class="editor-icon">ST3</div>
+          <h3>Sublime Text 3</h3>
+          <p>Sophisticated text editor for code</p>
+          <div class="editor-tags">
+            <span class="tag">Freemium</span>
+            <span class="tag">Fast</span>
+          </div>
+        </div>
+
+        <div class="editor-card">
+          <div class="editor-icon">AT</div>
+          <h3>Atom</h3>
+          <p>Hackable text editor for the 21st Century</p>
+          <div class="editor-tags">
+            <span class="tag">Free</span>
+            <span class="tag">Customizable</span>
+          </div>
+        </div>
+
+        <div class="editor-card featured">
+          <div class="editor-icon">VSC</div>
+          <h3>Visual Studio Code</h3>
+          <p>Most popular code editor with extensive features</p>
+          <div class="editor-tags">
+            <span class="tag">Free</span>
+            <span class="tag">Powerful</span>
+            <span class="tag">Recommended</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="file-extension-note">
+        <div class="note-icon">NOTE</div>
+        <p>Save HTML files with <code>.html</code> extension (e.g., <code>hello.html</code>)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HTML WITH CSS & JS ===== -->
+  <section class="slide content-slide" data-slide="5">
+    <div class="slide-background">
+      <div class="bg-features"></div>
+    </div>
+
+    <div class="slide-content">
+      <div class="slide-header">
+        <div class="chapter-badge">Part 1: HTML Fundamentals</div>
+        <h2 class="slide-title">HTML with CSS & JavaScript</h2>
+        <div class="slide-subtitle">The Web Development Trio</div>
+      </div>
+
+      <div class="web-trio">
+        <div class="tech-card html-card">
+          <div class="tech-icon">HTML</div>
+          <h3>HTML</h3>
+          <p class="tech-role">Structure</p>
+          <p>Defines the content and layout of web pages</p>
+          <ul>
+            <li>Headings & paragraphs</li>
+            <li>Images & links</li>
+            <li>Forms & tables</li>
+          </ul>
+        </div>
+
+        <div class="tech-card css-card">
+          <div class="tech-icon">CSS</div>
+          <h3>CSS</h3>
+          <p class="tech-role">Presentation</p>
+          <p>Styles and makes HTML look beautiful</p>
+          <ul>
+            <li>Colors & fonts</li>
+            <li>Layout & positioning</li>
+            <li>Animations & effects</li>
+          </ul>
+        </div>
+
+        <div class="tech-card js-card">
+          <div class="tech-icon">JS</div>
+          <h3>JavaScript</h3>
+          <p class="tech-role">Behavior</p>
+          <p>Makes web pages interactive and dynamic</p>
+          <ul>
+            <li>User interactions</li>
+            <li>Dynamic content</li>
+            <li>Form validation</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="integration-example">
+        <h4>How They Work Together:</h4>
+        <div class="code-example">
+          <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;My Page&lt;/title&gt;
+  &lt;!-- CSS --&gt;
+  &lt;style&gt;
+    body { font-family: Arial; }
+    .highlight { color: blue; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- HTML --&gt;
+  &lt;h1 class="highlight"&gt;Hello World!&lt;/h1&gt;
+  
+  &lt;!-- JavaScript --&gt;
+  &lt;script&gt;
+    document.querySelector('h1').addEventListener('click', function() {
+      alert('Hello from JavaScript!');
+    });
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FIRST HTML FILE ===== -->
+  <section class="slide demo-slide" data-slide="6">
+    <div class="slide-background">
+      <div class="bg-code"></div>
+    </div>
+
+    <div class="slide-content">
+      <div class="slide-header">
+        <div class="chapter-badge">Part 1: HTML Fundamentals</div>
+        <h2 class="slide-title">Your First HTML File</h2>
+        <div class="slide-subtitle">Let's Create hello.html</div>
+      </div>
+
+      <div class="demo-container">
+        <div class="code-editor">
+          <div class="editor-header">
+            <div class="editor-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <span class="editor-title">hello.html</span>
+          </div>
+          <div class="editor-content">
+            <pre id="liveCode"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;My First Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hello World!&lt;/h1&gt;
+  &lt;p&gt;Welcome to my first web page.&lt;/p&gt;
+  &lt;p&gt;This is created using HTML.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="demo-preview">
+          <div class="preview-header">
+            <div class="browser-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <span class="preview-url">hello.html</span>
+          </div>
+          <div class="preview-content" id="livePreview">
+            <!-- Live preview will be rendered here -->
+            <h1>Hello World!</h1>
+            <p>Welcome to my first web page.</p>
+            <p>This is created using HTML.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="creation-steps">
+        <h3>Steps to Create Your First HTML File:</h3>
+        <ol class="steps-list">
+          <li>Open your preferred HTML editor (VS Code recommended)</li>
+          <li>Create a new file and name it <code>hello.html</code></li>
+          <li>Type the HTML code shown above</li>
+          <li>Save the file with <code>.html</code> extension</li>
+          <li>Open the file in a web browser to see the result</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HTML TAGS & ELEMENTS ===== -->
+  <section class="slide content-slide" data-slide="7">
+    <div class="slide-background">
+      <div class="bg-quiz"></div>
+    </div>
+
+    <div class="slide-content">
+      <div class="slide-header">
+        <div class="chapter-badge">Part 1: HTML Fundamentals</div>
+        <h2 class="slide-title">HTML Tags & Elements</h2>
+        <div class="slide-subtitle">Building Blocks of Web Pages</div>
+      </div>
+
+      <div class="tags-elements-container">
+        <div class="tags-section">
+          <h3>HTML Tags</h3>
+          <div class="concept-explanation">
+            <p>A <strong>tag</strong> is a command that tells the web browser how to display content on a web page.</p>
+            <ul>
+              <li>Tags are indicated with angle brackets: <code>&lt; &gt;</code></li>
+              <li>They start with <code>&lt;tagname&gt;</code> and end with <code>&lt;/tagname&gt;</code></li>
+              <li>Most tags come in pairs: opening tag and closing tag</li>
+              <li>Tags are <strong>not case sensitive</strong></li>
+              <li>Tags can have <strong>attributes</strong> for additional information</li>
+            </ul>
+          </div>
+
+          <div class="tag-examples">
+            <h4>Common HTML Tags:</h4>
+            <div class="tags-grid">
+              <span class="tag-example">&lt;html&gt;&lt;/html&gt;</span>
+              <span class="tag-example">&lt;head&gt;&lt;/head&gt;</span>
+              <span class="tag-example">&lt;title&gt;&lt;/title&gt;</span>
+              <span class="tag-example">&lt;body&gt;&lt;/body&gt;</span>
+              <span class="tag-example">&lt;h1&gt;&lt;/h1&gt;</span>
+              <span class="tag-example">&lt;p&gt;&lt;/p&gt;</span>
+              <span class="tag-example">&lt;div&gt;&lt;/div&gt;</span>
+              <span class="tag-example">&lt;span&gt;&lt;/span&gt;</span>
+              <span class="tag-example">&lt;a&gt;&lt;/a&gt;</span>
+              <span class="tag-example">&lt;img&gt;</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="elements-section">
+          <h3>HTML Elements</h3>
+          <div class="concept-explanation">
+            <p>An <strong>HTML element</strong> consists of:</p>
+            <ul>
+              <li>Start tag</li>
+              <li>Content</li>
+              <li>End tag</li>
+              <li>Optional attributes</li>
+            </ul>
+            <p><strong>Empty elements</strong> (void elements) don't require closing tags:</p>
+            <div class="empty-elements">
+              <span class="empty-tag">&lt;br&gt;</span>
+              <span class="empty-tag">&lt;img&gt;</span>
+              <span class="empty-tag">&lt;hr&gt;</span>
+              <span class="empty-tag">&lt;input&gt;</span>
+              <span class="empty-tag">&lt;meta&gt;</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="attributes-section">
+          <h3>HTML Attributes</h3>
+          <div class="concept-explanation">
+            <p><strong>Attributes</strong> provide additional information about HTML elements:</p>
+            <ul>
+              <li>Appear in the opening tag</li>
+              <li>Format: <code>name="value"</code></li>
+              <li>Values are contained in quotes</li>
+            </ul>
+            <div class="attribute-example">
+              <h4>Example:</h4>
+              <pre><code>&lt;a href="https://devvoltz.com" target="_blank"&gt;Visit DevVoltz&lt;/a&gt;
+&lt;img src="image.jpg" alt="Description" width="500"&gt;</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RECAP & NEXT STEPS ===== -->
+  <section class="slide final-slide" data-slide="8">
+    <div class="slide-background">
+      <div class="bg-final"></div>
+    </div>
+
+    <div class="slide-content">
+      <div class="completion-animation">
+        <div class="confetti-container"></div>
+        <div class="trophy">COMPLETE</div>
+        <h2 class="completion-title">Great Job!</h2>
+        <p class="completion-subtitle">You've learned HTML Fundamentals</p>
+      </div>
+
+      <div class="recap-section">
+        <h3>What We Covered in Part 1:</h3>
+        <div class="recap-grid">
+          <div class="recap-item">
+            <div class="recap-icon">HTML</div>
+            <h4>What is HTML</h4>
+            <p>HyperText Markup Language basics</p>
+          </div>
+          <div class="recap-item">
+            <div class="recap-icon">PROS/CONS</div>
+            <h4>Characteristics</h4>
+            <p>Advantages and disadvantages</p>
+          </div>
+          <div class="recap-item">
+            <div class="recap-icon">EDITORS</div>
+            <h4>HTML Editors</h4>
+            <p>Tools for writing HTML code</p>
+          </div>
+          <div class="recap-item">
+            <div class="recap-icon">TRIO</div>
+            <h4>Web Trio</h4>
+            <p>HTML with CSS & JavaScript</p>
+          </div>
+          <div class="recap-item">
+            <div class="recap-icon">FIRST</div>
+            <h4>First HTML File</h4>
+            <p>Created hello.html</p>
+          </div>
+          <div class="recap-item">
+            <div class="recap-icon">TAGS</div>
+            <h4>Tags & Elements</h4>
+            <p>HTML building blocks</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="practice-section">
+        <h3>Practice Exercise:</h3>
+        <div class="exercise-card">
+          <h4>Create Your Bio Page</h4>
+          <p>Create an HTML file with:</p>
+          <ul>
+            <li>A main heading with your name</li>
+            <li>A paragraph about yourself</li>
+            <li>Your favorite hobbies in a list</li>
+            <li>A link to your favorite website</li>
+          </ul>
+          <button class="exercise-btn">Try It Now</button>
+        </div>
+      </div>
+
+      <div class="cta-section">
+        <button class="cta-button" id="nextVideo">
+          <span>Continue to Part 2: HTML Document Structure</span>
+          <i class="fas fa-arrow-right"></i>
+        </button>
+        <p class="cta-note">Next: Learn about DOCTYPE, head section, and body structure</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRESENTER NOTES ===== -->
+  <div class="presenter-notes" id="presenterNotes">
+    <div class="notes-header">
+      <h4>Presenter Notes - Video 1</h4>
+      <button class="notes-toggle" id="toggleNotes">
+        <i class="fas fa-chevron-up"></i>
+      </button>
+    </div>
+    <div class="notes-content">
+      <div class="note" data-slide="1">
+        <strong>Intro Slide:</strong> Welcome students to HTML Fundamentals. Emphasize that HTML is the foundation of all web development.
+      </div>
+      <div class="note" data-slide="2">
+        <strong>What is HTML:</strong> Break down "HyperText Markup Language" term by term. Use analogies like HTML = skeleton, CSS = skin, JS = muscles.
+      </div>
+      <div class="note" data-slide="3">
+        <strong>Characteristics:</strong> Discuss real-world implications of advantages and limitations. Mention that HTML5 addresses many limitations.
+      </div>
+      <div class="note" data-slide="4">
+        <strong>HTML Editors:</strong> Demonstrate VS Code setup. Show extensions like Live Server. Emphasize the .html file extension.
+      </div>
+      <div class="note" data-slide="5">
+        <strong>Web Trio:</strong> Explain how these three technologies work together. Use building analogy: HTML=structure, CSS=paint, JS=electricity.
+      </div>
+      <div class="note" data-slide="6">
+        <strong>First HTML File:</strong> Live code hello.html. Show the result in browser. Encourage students to code along.
+      </div>
+      <div class="note" data-slide="7">
+        <strong>Tags & Elements:</strong> Differentiate between tags and elements. Show common mistakes. Emphasize proper nesting.
+      </div>
+      <div class="note" data-slide="8">
+        <strong>Recap:</strong> Summarize key takeaways. Assign the practice exercise. Preview what's coming in Video 2.
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MOVING SOCIAL BAR ===== -->
+  <div class="social-ticker">
+    <div class="ticker-content">
+      <span class="ticker-item">🎓 HTML Fundamentals - DevVoltz Academy</span>
+      <span class="ticker-item">🌐 Website: www.devvoltz.com</span>
+      <span class="ticker-item">📱 Telegram: @devvoltz</span>
+      <span class="ticker-item">📸 Instagram: @devvoltz</span>
+      <span class="ticker-item">👥 Facebook: facebook.com/devvoltz</span>
+      <span class="ticker-item">💻 Next: HTML Document Structure</span>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+
+  <!-- PWA Service Worker Registration -->
+  <script>
+    // Register Service Worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js')
+          .then(function(registration) {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          })
+          .catch(function(error) {
+            console.log('ServiceWorker registration failed: ', error);
+          });
+      });
+    }
+
+    // PWA Install Prompt
+    let deferredPrompt;
+    const installButton = document.createElement('button');
+    installButton.className = 'install-btn';
+    
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // Prevent the mini-infobar from appearing on mobile
+      e.preventDefault();
+      // Stash the event so it can be triggered later
+      deferredPrompt = e;
+      
+      // Create and show install button
+      installButton.textContent = '📱 Install App';
+      installButton.onclick = installPWA;
+      document.body.appendChild(installButton);
+    });
+
+    function installPWA() {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('User accepted the install prompt');
+            installButton.style.display = 'none';
+            // Show success message
+            showInstallSuccess();
+          }
+          deferredPrompt = null;
+        });
+      }
+    }
+
+    function showInstallSuccess() {
+      const successMsg = document.createElement('div');
+      successMsg.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #4CAF50;
+        color: white;
+        padding: 15px 20px;
+        border-radius: 5px;
+        z-index: 1000;
+        font-family: 'Outfit', sans-serif;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      `;
+      successMsg.textContent = '🎉 App installed successfully!';
+      document.body.appendChild(successMsg);
+      
+      setTimeout(() => {
+        document.body.removeChild(successMsg);
+      }, 3000);
+    }
+
+    // Track app installation
+    window.addEventListener('appinstalled', (evt) => {
+      console.log('PWA was installed successfully');
+      installButton.style.display = 'none';
+    });
+
+    // Check if app is running in standalone mode
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      console.log('Running in PWA mode');
+      document.body.classList.add('pwa-standalone');
+    }
+
+    // Online/Offline detection
+    window.addEventListener('online', function() {
+      console.log('App is online');
+      showStatusMessage('🟢 Back online', '#4CAF50');
+    });
+
+    window.addEventListener('offline', function() {
+      console.log('App is offline');
+      showStatusMessage('🔴 Offline - Using cached content', '#ff9800');
+    });
+
+    function showStatusMessage(message, color) {
+      const statusMsg = document.createElement('div');
+      statusMsg.style.cssText = `
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: ${color};
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        z-index: 1000;
+        font-family: 'Outfit', sans-serif;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      `;
+      statusMsg.textContent = message;
+      document.body.appendChild(statusMsg);
+      
+      setTimeout(() => {
+        if (document.body.contains(statusMsg)) {
+          document.body.removeChild(statusMsg);
+        }
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
