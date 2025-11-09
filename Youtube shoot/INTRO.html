@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DevVoltz Academy — YouTube Intro</title>
+  <style>
+    :root{
+      --bg:#070710;
+      --accent:#00d1ff;
+      --accent-2:#7b61ff;
+      --muted:#9aa4b2;
+      --white:#ffffff;
+      --glass: rgba(255,255,255,0.04);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    
+    html,body{
+      height:100%;margin:0;
+      background:radial-gradient(1200px 600px at 10% 10%, rgba(123,97,255,0.08), transparent), 
+                 radial-gradient(circle at 90% 20%, rgba(0,209,255,0.05), transparent 50%),
+                 linear-gradient(180deg,#06060a 0%, #0b0b14 100%);
+      color:var(--white);overflow:hidden;
+    }
+    
+    .stage{
+      width:100vw;height:100vh;
+      display:grid;place-items:center;
+      position:relative;padding:40px;
+    }
+    
+    .card{
+      width:1100px;max-width:92vw;
+      height:620px;max-height:86vh;
+      border-radius:24px;
+      background:linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      box-shadow:0 20px 60px rgba(2,6,23,0.8),
+                 inset 0 1px 0 rgba(255,255,255,0.1);
+      backdrop-filter:blur(12px);
+      position:relative;overflow:hidden;
+      padding:40px;display:flex;gap:32px;align-items:center;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    .visual{
+      flex:1;display:flex;flex-direction:column;
+      align-items:center;justify-content:center;
+      position:relative;
+    }
+
+    .logo-wrap{
+      width:280px;height:280px;
+      display:flex;align-items:center;justify-content:center;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(0,209,255,0.08), rgba(123,97,255,0.08));
+      box-shadow:0 0 60px rgba(0,209,255,0.4), 0 0 120px rgba(123,97,255,0.2);
+      position:relative;
+      transform:scale(0.8);opacity:0;
+      transition:all 1200ms cubic-bezier(0.2,0.9,0.3,1.2);
+    }
+
+    .logo-wrap.animated{
+      transform:scale(1);opacity:1;
+    }
+
+    .glow-ring{
+      position:absolute;
+      width:280px;height:280px;
+      border-radius:50%;
+      border:3px solid transparent;
+      background:conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent));
+      animation:rotate 8s linear infinite;
+      box-sizing:border-box;
+      padding:4px;
+      opacity:0.7;
+    }
+
+    @keyframes rotate {
+      0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}
+    }
+
+    .logo img{
+      width:180px;height:180px;
+      border-radius:20px;object-fit:contain;
+      opacity:0;transform:scale(0.8) rotate(-8deg);
+      animation:fadeInLogo 2s ease-in-out forwards;
+      animation-delay:300ms;
+      z-index:2;position:relative;
+    }
+
+    @keyframes fadeInLogo {
+      from { opacity:0; transform:scale(0.8) rotate(-8deg); }
+      to { opacity:1; transform:scale(1) rotate(0deg); }
+    }
+
+    .chip{
+      position:absolute;width:420px;height:420px;
+      border-radius:24px;left:20px;top:-60px;
+      opacity:0;transform:translateY(40px) scale(.9);
+      filter:blur(12px);transition:all 1000ms cubic-bezier(0.2,0.9,0.3,1);
+      z-index:0;
+    }
+    
+    .chip.show{
+      opacity:0.4;transform:translateY(0) scale(1);
+    }
+
+    .content{
+      flex:1.2;padding:20px 12px;
+      display:flex;flex-direction:column;gap:24px;
+    }
+    
+    .headline{
+      font-size:42px;line-height:1.1;
+      font-weight:700;letter-spacing:-0.8px;
+      opacity:0;transform:translateY(20px);
+      transition:all 600ms cubic-bezier(0.2,0.9,0.3,1);
+    }
+    
+    .sub{
+      color:var(--muted);font-size:18px;line-height:1.5;
+      opacity:0;transform:translateY(16px);
+      transition:all 600ms cubic-bezier(0.2,0.9,0.3,1);
+    }
+    
+    .tagline{
+      display:flex;gap:12px;margin-top:12px;
+      opacity:0;transform:translateY(12px);
+      transition:all 600ms cubic-bezier(0.2,0.9,0.3,1);
+    }
+    
+    .pill{
+      padding:10px 16px;border-radius:999px;
+      background:linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.06);
+      font-size:14px;font-weight:500;
+      backdrop-filter:blur(4px);
+    }
+    
+    .cta{
+      margin-top:auto;display:flex;gap:16px;
+      align-items:center;opacity:0;
+      transform:translateY(12px);
+      transition:all 600ms cubic-bezier(0.2,0.9,0.3,1);
+    }
+    
+    .btn-sub{
+      padding:14px 24px;border-radius:999px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      border:none;color:#001;font-weight:700;
+      cursor:pointer;box-shadow:0 12px 32px rgba(123,97,255,0.2);
+      font-size:16px;transition:all 300ms ease;
+    }
+    
+    .btn-sub:hover{
+      transform:translateY(-2px);
+      box-shadow:0 16px 40px rgba(123,97,255,0.3);
+    }
+    
+    .btn-sub.pulse{
+      animation:pulse 2000ms infinite;
+    }
+    
+    @keyframes pulse{
+      0%{transform:scale(1);box-shadow:0 12px 32px rgba(123,97,255,0.2);}
+      50%{transform:scale(1.05);box-shadow:0 16px 40px rgba(123,97,255,0.4);}
+      100%{transform:scale(1);box-shadow:0 12px 32px rgba(123,97,255,0.2);}
+    }
+
+    .timecode{
+      position:absolute;right:24px;bottom:20px;
+      font-size:13px;color:var(--muted);
+      font-family:monospace;
+      background:rgba(0,0,0,0.3);padding:4px 8px;
+      border-radius:6px;backdrop-filter:blur(4px);
+    }
+    
+    .show-text{
+      opacity:1 !important;transform:translateY(0) !important;
+    }
+
+    .floating-particles{
+      position:absolute;inset:0;pointer-events:none;
+      opacity:0.1;z-index:1;
+    }
+
+    .particle{
+      position:absolute;width:2px;height:2px;
+      background:var(--accent);border-radius:50%;
+      animation:float 8s infinite linear;
+    }
+
+    @keyframes float{
+      0%{transform:translateY(100vh) translateX(0);opacity:0;}
+      10%{opacity:1;}
+      90%{opacity:1;}
+      100%{transform:translateY(-100px) translateX(20px);opacity:0;}
+    }
+
+    @media (max-width:920px){
+      .card{flex-direction:column;height:auto;padding:24px;gap:24px;}
+      .visual{order:2;}
+      .content{order:1;padding:0;}
+      .logo-wrap{width:200px;height:200px;}
+      .logo img{width:140px;height:140px;}
+      .chip{display:none;}
+      .headline{font-size:28px;}
+      .sub{font-size:16px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <div class="floating-particles" id="particles"></div>
+    
+    <div class="card">
+      <div class="visual">
+        <div class="chip" id="chip">
+          <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1">
+                <stop offset="0" stop-color="#00d1ff" stop-opacity="0.3"/>
+                <stop offset="1" stop-color="#7b61ff" stop-opacity="0.2"/>
+              </linearGradient>
+            </defs>
+            <rect x="48" y="48" width="504" height="504" rx="28" fill="url(#g1)"/>
+          </svg>
+        </div>
+
+        <div class="logo-wrap" id="logoWrap">
+          <div class="glow-ring"></div>
+          <div class="logo" id="logoText">
+            <img src="logodev1.jpg" alt="DevVoltz Logo" />
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div>
+          <div class="headline" id="headline">Welcome to <span style="color:var(--accent);">DevVoltz Academy</span></div>
+          <div class="sub" id="sub">I'm Simegnew — your guide to technology, AI, and modern development.</div>
+          <div class="tagline" id="tagline">
+            <div class="pill">Tech</div>
+            <div class="pill">AI</div>
+            <div class="pill">Coding</div>
+            <div class="pill">Projects</div>
+          </div>
+        </div>
+
+        <div class="sub" id="mission" style="margin-top:8px; opacity:0; transform:translateY(12px);">
+          We create easy-to-follow tutorials, real projects, and insights to help you learn and build real skills.
+        </div>
+
+        <div class="cta" id="cta">
+          <button class="btn-sub" id="subscribeBtn">Subscribe Now</button>
+          <div class="sub">Like • Share • Join our community</div>
+        </div>
+
+        <div class="timecode" id="timecode">0:00</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const logoWrap = document.getElementById('logoWrap');
+    const chip = document.getElementById('chip');
+    const headline = document.getElementById('headline');
+    const sub = document.getElementById('sub');
+    const tagline = document.getElementById('tagline');
+    const mission = document.getElementById('mission');
+    const cta = document.getElementById('cta');
+    const timecode = document.getElementById('timecode');
+    const subscribeBtn = document.getElementById('subscribeBtn');
+    const particles = document.getElementById('particles');
+
+    // Create floating particles
+    function createParticles() {
+      for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + 'vw';
+        particle.style.animationDelay = Math.random() * 8 + 's';
+        particle.style.animationDuration = (6 + Math.random() * 6) + 's';
+        particles.appendChild(particle);
+      }
+    }
+
+    function show(el) {
+      el.classList.add('show-text');
+    }
+
+    function setTime(ms) {
+      const s = Math.floor(ms / 1000);
+      const mm = Math.floor(s / 60);
+      const ss = s % 60;
+      timecode.textContent = mm + ':' + (ss < 10 ? '0' + ss : ss);
+    }
+
+    // Initial animation sequence
+    setTimeout(() => {
+      logoWrap.classList.add('animated');
+      chip.classList.add('show');
+      createParticles();
+    }, 200);
+
+    setTimeout(() => {
+      headline.textContent = 'Hey everyone! Welcome to DevVoltz Academy';
+      show(headline); show(sub); show(tagline);
+      setTime(3);
+    }, 1200);
+
+    setTimeout(() => {
+      headline.textContent = 'Explore Technology, Development & AI';
+      sub.textContent = 'Demos, tutorials, and real project walkthroughs.';
+      show(mission);
+      setTime(12);
+    }, 10000);
+
+    setTimeout(() => {
+      headline.textContent = 'Learn • Build • Grow';
+      sub.textContent = 'Practical lessons and projects to level up your skills.';
+      setTime(28);
+    }, 25000);
+
+    setTimeout(() => {
+      headline.textContent = 'Join the DevVoltz Community';
+      sub.textContent = 'Subscribe, like, and share to support the channel.';
+      show(cta);
+      subscribeBtn.classList.add('pulse');
+      setTime(42);
+    }, 40000);
+
+    setTimeout(() => {
+      headline.textContent = 'Where Technology Meets Creativity';
+      sub.textContent = 'Thanks for watching — see you in the next video!';
+      logoWrap.style.transform = 'scale(0.95)';
+      setTime(56);
+    }, 55000);
+
+    setTimeout(() => {
+      setTime(60);
+      subscribeBtn.classList.remove('pulse');
+    }, 60000);
+
+    // Real-time timer update
+    let startTime = Date.now();
+    setInterval(() => {
+      const elapsed = Date.now() - startTime;
+      setTime(elapsed);
+    }, 1000);
+  </script>
+</body>
+</html>
